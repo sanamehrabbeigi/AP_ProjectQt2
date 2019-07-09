@@ -1,0 +1,261 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+typedef struct date
+{
+	int day, month, year;
+}date;
+
+typedef struct Time
+{
+	int hour, minute, second;
+}Time;
+
+class user
+{
+protected:
+	bool state;// 0 for fired 1 for active  
+	string name, family, username, password;
+	date birthday;
+	Time time_in, time_out;
+	int cash;
+public:
+	user();
+	~user();
+	//setter:
+	void set_state(bool b);
+	void set_name(string s);
+	void set_family(string s);
+	void set_username(string s);
+	void set_password(string s);
+	void set_birthday(date d);
+	void set_time_in(Time t);
+	void set_time_out(Time t);
+	void set_cash(int a);
+	//getter:
+	bool get_state();
+	string get_name();
+	string get_family();
+	string get_username();
+	string get_password();
+	date get_birthday();
+	Time get_time_in();
+	Time get_time_out();
+	int get_cash();
+};
+
+user::user()
+{
+	// cout << "constructor is called!\n";
+	time_in.hour = 0;
+	time_in.minute = 0;
+	time_in.second = 0;
+	time_out.hour = 0;
+	time_in.minute = 0;
+	time_in.second = 0;
+	state = 0;
+}
+user::~user()
+{
+	// cout << "distructor is called!\n";
+}
+void user::set_birthday(date d)
+{
+	birthday = d;
+}
+void user::set_family(string s)
+{
+	family = s;
+}
+void user::set_name(string s)
+{
+	name = s;
+}
+void user::set_password(string s)
+{
+	password = s;
+}
+void user::set_state(bool b)
+{
+	state = b;
+}
+void user::set_time_in(Time t)
+{
+	time_in = t;
+}
+void user::set_time_out(Time t)
+{
+	time_out = t;
+}
+void user::set_username(string s)
+{
+	username = s;
+}
+void user::set_cash(int a)
+{
+	cash = a;
+}
+
+date user::get_birthday()
+{
+	return birthday;
+}
+string user::get_family()
+{
+	return family;
+}
+string user::get_name()
+{
+	return name;
+}
+string user::get_password()
+{
+	return password;
+}
+bool user::get_state()
+{
+	return state;
+}
+Time user::get_time_in()
+{
+	return time_in;
+}
+Time user::get_time_out()
+{
+	return time_out;
+}
+string user::get_username()
+{
+	return username;
+}
+int user::get_cash()
+{
+	return cash;
+}
+
+class normal_user : public user
+{
+private:
+	vector <rent> v_rent_for_normal_user;
+	vector <sale> v_sale_for_normal_user;
+public:
+	normal_user();
+	~normal_user();
+	//setter:
+	void set_v_rent_for_normal_user( vector<rent> v);
+	void set_v_sale_for_normal_user( vector<sale> v);
+	//getter:
+	vector<rent> get_v_rent_for_normal_user();
+	vector<sale> get_v_sale_for_normal_user();
+};
+
+normal_user::normal_user()
+{
+	// cout << "constructor is called!\n";
+}
+normal_user::~normal_user()
+{
+	// cout << "distructor is called!\n";
+}
+void normal_user::set_v_rent_for_normal_user(vector<rent> v)
+{
+	v_rent_for_normal_user = v;
+}
+void normal_user::set_v_sale_for_normal_user(vector<sale> v)
+{
+	v_sale_for_normal_user = v;
+}
+
+vector<rent> normal_user::get_v_rent_for_normal_user()
+{
+	return v_rent_for_normal_user;
+}
+vector<sale> normal_user::get_v_sale_for_normal_user()
+{
+	return v_sale_for_normal_user;
+}
+
+class manager : public user
+{
+private:
+	vector <rent> v_rent_for_manager;
+	vector <sale> v_sale_for_manager;
+	vector <northVilla> v_northVilla_for_manager;
+	vector <soutVilla> v_southVilla_for_manager;
+	vector <apartment> v_apartment_for_manager;
+public:
+	manager();
+	~manager();
+	//setter:
+	void set_v_rent_for_manager( vector<rent> v);
+	void set_v_sale_for_manager(vector<sale> v);
+	void set_v_northVilla_for_manager(vector<northVilla> v);
+	void set_v_southVilla_for_manager(vector<southVilla> v);
+	void set_v_apartment_for_manager(vector<apartment> v);
+	//getter:
+	vector<rent> get_v_rent_for_manager();
+	vector<sale> get_v_sale_for_manager();
+	vector<northVilla> get_v_northVilla_for_manager();
+	vector<southVilla> get_v_southVilla_for_manager();
+	vector<apartment> get_v_apartment_for_manager();
+};
+
+manager::manager()
+{
+	// cout << "constructor is called!\n";
+}
+manager::~manager()
+{
+	// cout << "distructor is called!\n";
+}
+void manager::set_v_rent_for_manager(vector<rent> v)
+{
+	v_rent_for_manager = v;
+}
+void manager::set_v_sale_for_manager(vector<sale> v)
+{
+	v_sale_for_manager = v;
+}
+void manager::set_v_northVilla_for_manager(vector<northVilla> v)
+{
+	v_northVilla_for_manager = v;
+}
+void manager::set_v_southVilla_for_manager(vector<southVilla> v)
+{
+	v_southVilla_for_manager = v;
+}
+void manager::set_v_apartment_for_manager(vector<apartment> v)
+{
+	v_apartment_for_manager = v;
+}
+
+vector<rent> manager::get_v_rent_for_manager()
+{
+	return v_rent_for_manager;
+}
+vector<sale> manager::get_v_sale_for_manager()
+{
+	return v_sale_for_manager;
+}
+vector<northVilla> manager::get_v_northVilla_for_manager()
+{
+	return v_northVilla_for_manager;
+}
+vector<southVilla> manager::get_v_southVilla_for_manager()
+{
+	return v_southVilla_for_manager;
+}
+vector <apartment> manager::get_v_apartment_for_manager()
+{
+	return v_apartment_for_manager;
+}
+
+int main()
+{
+	getch();
+	return 0;
+}

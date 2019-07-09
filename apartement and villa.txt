@@ -1,0 +1,386 @@
+#include<iostream>
+using namespace std;
+class apartment {
+protected:
+	int total_space;
+	int price_per_metr;
+	bool elavator; // 1 ou 0
+	int number_of_floors;
+	string address;
+	int number_of_houses;
+	house *h;
+	int total_price;
+	int state;//0 ya 1->rent ya 2->sale
+public:
+	apartment();
+	void setTotalSpace(int s);
+	int getTotalSpace();
+	void setPricePerMetr(int p);
+	int getPricePerMetr();
+	void setNumberOfFloors(int n);
+	int getNumberOfFloors();
+	void setElavator(bool e);
+	bool getElavator();
+	void setAddress(string a);
+	string getAddress();
+	void setTotalPrice(int tp);
+	int getTotalPrice();
+	int calTotalPrice();
+	int get_state();
+	void set_state(int s);
+};
+class house :public apartment{
+private:
+	int floor_number;
+	int number_of_rooms;
+	int building_space;
+	int total_price_of_house;
+public:
+	int cal_total_price();
+	void setFloorNumber(int f);
+	int getFloorNumber();
+	void setNumberOfRooms(int n);
+	int getNumberOfRooms();
+	void setBuildingSpace(int b);
+	int getBuildingSpace();
+	void setTotalPriceOfHouse(int t);
+	int getTotalPriceOfHouse();
+};
+
+class villa {
+protected:
+	int building_space;
+	int total_space;
+	int price_per_metr;
+	int number_of_rooms;
+	string address;
+	int state; // 0 ya  1->rent ya 2->sale
+public:
+	villa();
+	void set_building_space(int b);
+	int get_building_space();
+	void set_total_space(int t);
+	int get_total_space();
+	void set_price_per_metr(int p);
+	int get_price_per_metr();
+	void set_number_of_rooms(int n);
+	int get_number_of_rooms();
+	void set_address(string a);
+	string get_address();
+	int get_state();
+	void set_state(int s);
+	virtual int cal_total_price() { return 0; }
+};
+class northVilla : public villa {
+	int area_of_front_yard;
+	int area_of_back_yard;
+	int total_price;
+public:
+	void set_area_of_front_yard(int af);
+	int get_area_of_front_yard();
+	void set_area_of_back_yard(int ab);
+	int get_area_of_back_yard();
+	void set_total_price(int tp);
+	int get_total_price();
+	int cal_total_price();
+};
+class southVilla :public villa {
+	int area_of_yard;
+	int area_of_parking;
+	int total_price;
+public:
+	void set_area_of_yard(int ay);
+	int get_area_of_yard();
+	void set_area_of_parking(int ap);
+	int get_area_of_parking();
+	void set_total_price(int tp);
+	int get_total_price();
+	int cal_total_price();
+
+};
+apartment::apartment()
+{
+	h = new house[number_of_houses];
+	state = 0;
+}
+
+void apartment::setTotalSpace(int s)
+{
+	total_space = s;
+}
+
+int apartment::getTotalSpace()
+{
+	return total_space;
+}
+
+void apartment::setPricePerMetr(int p)
+{
+	price_per_metr = p;
+}
+
+int apartment::getPricePerMetr()
+{
+	return price_per_metr;
+}
+
+void apartment::setNumberOfFloors(int n)
+{
+	number_of_floors = n;
+}
+
+int apartment::getNumberOfFloors()
+{
+	return number_of_floors;
+}
+
+void apartment::setElavator(bool e)
+{
+	elavator = e;
+}
+
+bool apartment::getElavator()
+{
+	return elavator;
+}
+
+void apartment::setAddress(string a)
+{
+	address = a;
+}
+
+string apartment::getAddress()
+{
+	return address;
+}
+
+void apartment::setTotalPrice(int tp)
+{
+	total_price = tp;
+}
+
+int apartment::getTotalPrice()
+{
+	return total_price;
+}
+
+/*
+#include<fstream>
+#include<iostream>
+using namespace std;
+int main(){
+fstream image;
+image.open("C:\Users\Asus\Desktop\\Untiteled.png");
+return 0;
+}
+*/
+
+int house::cal_total_price()
+{
+	total_price_of_house = building_space*price_per_metr;
+	for (int i = 0; i < floor_number; i++)
+	{
+		total_price_of_house += 0.05*floor_number;
+	}
+	for (int i = 0; i < number_of_rooms; i++) {
+		total_price_of_house += 0.08*number_of_rooms;
+	}
+	if (elavator == 1)
+		 total_price_of_house += 0.02;
+	return total_price_of_house;
+}
+
+void house::setFloorNumber(int f)
+{
+	floor_number = f;
+}
+
+int house::getFloorNumber()
+{
+	return floor_number;
+}
+
+void house::setNumberOfRooms(int n)
+{
+	number_of_floors = n;
+}
+
+int house::getNumberOfRooms()
+{
+	return number_of_floors;
+}
+
+void house::setBuildingSpace(int b)
+{
+	building_space = b;
+}
+
+int house::getBuildingSpace()
+{
+	return building_space;
+}
+
+void house::setTotalPriceOfHouse(int t)
+{
+	total_price = t;
+}
+
+int house::getTotalPriceOfHouse()
+{
+	return total_price_of_house;
+}
+
+int apartment::calTotalPrice()
+{
+	total_price = total_space*price_per_metr*0.8;
+	return total_price;
+}
+
+int apartment::get_state()
+{
+	return state;
+}
+
+void apartment::set_state(int s)
+{
+	state = s;
+}
+
+villa::villa()
+{
+	state = 0;
+}
+
+void villa::
+set_building_space(int b)
+{
+	building_space = b;
+}
+
+int villa::get_building_space()
+{
+	return building_space;
+}
+
+void villa::set_total_space(int t)
+{
+	total_space = t;
+}
+
+int villa::get_total_space()
+{
+	return total_space;
+}
+
+void villa::set_price_per_metr(int p)
+{
+	price_per_metr = p;
+}
+
+int villa::get_price_per_metr()
+{
+	return price_per_metr;
+}
+
+void villa::set_number_of_rooms(int n)
+{
+	number_of_rooms = n;
+}
+
+int villa::get_number_of_rooms()
+{
+	return number_of_rooms;
+}
+
+void villa::set_address(string a)
+{
+	address = a;
+}
+
+string villa::get_address()
+{
+	return address;
+}
+
+int villa::get_state()
+{
+	return state;
+}
+
+void villa::set_state(int s)
+{
+	state = s;
+}
+
+void northVilla::set_area_of_front_yard(int af)
+{
+	area_of_front_yard = af;
+}
+
+int northVilla::get_area_of_front_yard()
+{
+	return area_of_front_yard;
+}
+
+void northVilla::set_area_of_back_yard(int ab)
+{
+	area_of_back_yard = ab;
+}
+
+int northVilla::get_area_of_back_yard()
+{
+	return area_of_back_yard;
+}
+
+void northVilla::set_total_price(int tp)
+{
+	total_price = tp;
+}
+
+int northVilla::get_total_price()
+{
+	return total_price;
+
+}
+
+int northVilla::cal_total_price()
+{
+	total_price = price_per_metr*((building_space)+(area_of_back_yard*0.15) + (area_of_front_yard*0.3));
+	return total_price;
+}
+
+void southVilla::set_area_of_yard(int ay)
+{
+	area_of_yard = ay;
+}
+
+int southVilla::get_area_of_yard()
+{
+	return area_of_yard;
+}
+
+void southVilla::set_area_of_parking(int ap)
+{
+	area_of_parking = ap;
+}
+
+int southVilla::get_area_of_parking()
+{
+	return area_of_parking;
+}
+
+void southVilla::set_total_price(int tp)
+{
+	total_price = tp;
+}
+
+int southVilla::get_total_price()
+{
+	return total_price;
+}
+
+int southVilla::cal_total_price()
+{
+	total_price = price_per_metr*(building_space + (area_of_yard*0.3) + (area_of_parking*0.15));
+	return total_price;
+}

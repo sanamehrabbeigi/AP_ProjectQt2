@@ -1,0 +1,16 @@
+[
+    {
+        "address": "12",
+        "area_of_parkingd": 221,
+        "area_of_yard": 12,
+        "building_space": 2,
+        "id": "110",
+        "m_username": "1",
+        "nu_username": "-1",
+        "number_of_rooms": 1,
+        "price_per_metr": 12,
+        "state": 0,
+        "total_price": 465,
+        "total_space": 12
+    }
+]

@@ -1,0 +1,121 @@
+#include <iostream>
+//#include <conio.h>
+#include <string>
+#include <vector>
+#include "rent.h"
+#include "sale.h"
+#include "user.h"
+#include "apartment.h"
+#include "villa.h"
+
+using namespace std;
+
+vector <apartment> v_apartment;
+vector <northVilla> v_northVilla;
+vector <southVilla> v_southVilla;
+
+
+
+/*****  SHOW HABITATIONS WITH PRICE LESS THAN X AND AREA MORE THAN Y   ******/
+vector<apartment> show_apartment(double x, int y) {//gheymat paye kamtar x va metraj bishtar az y
+	vector <apartment> v_temp;
+	for (int i = 0; i < v_apartment.size(); i++)
+	{
+		if (v_apartment[i].get_state() == 0)
+			if (v_apartment[i].getPricePerMetr() < x && v_apartment[i].getTotalSpace > y)
+				v_temp.push_back(v_apartment[i]);
+	}
+	return v_temp;
+}
+
+vector<northVilla> show_north_villa(double x, int y) {
+	vector <northVilla> v_temp;
+	for (int i = 0; i < v_northVilla.size(); i++) {
+		if (v_northVilla[i].get_state() == 0)
+		if (v_northVilla[i].get_price_per_metr() < x && v_northVilla[i].get_building_space > y) {
+			v_temp.push_back(v_northVilla[i]);
+		}
+	}
+	return v_temp;
+}
+
+vector<southVilla> show_south_villa(double x, int y) {
+	vector <southVilla> v_temp;
+	for (int i = 0; i < v_southVilla.size(); i++) {
+		if (v_southVilla[i].get_state() == 0)
+		if (v_southVilla[i].get_price_per_metr() < x && v_southVilla[i].get_building_space > y) {
+			v_temp.push_back(v_southVilla[i]);
+		}
+	}
+	return v_temp;
+}
+/********  SHOW HABITATIONS LOCATED IN STREET Z ********/
+vector<apartment> show_apartment(string z) {//
+	vector <apartment> v_temp;
+	for (int i = 0; i < v_apartment.size(); i++) {
+		if (v_apartment[i].get_state() == 0)
+		if (v_apartment[i].getAddress.find(z)) {
+			v_temp.push_back(v_apartment[i]);
+		}	
+	}
+	return v_temp;
+}
+
+vector<northVilla> show_north_villa(string z) {
+	vector <northVilla> v_temp;
+	for (int i = 0; i < v_northVilla.size(); i++) {
+		if (v_northVilla[i].get_state() == 0)
+		if (v_northVilla[i].get_address.find(z)) {
+			v_temp.push_back(v_northVilla[i]);
+		}
+	}
+	return v_temp;
+}
+
+vector<southVilla> show_south_villa(string z) {
+	vector <southVilla> v_temp;
+	for (int i = 0; i < v_southVilla.size(); i++) {
+		if (v_southVilla[i].get_state() == 0)
+		if (v_southVilla[i].get_address.find(z)) {
+			v_temp.push_back(v_southVilla[i]);
+		}
+	}
+	return v_temp;
+}
+/***** SHOW APARTMENTS INCLUDING MORE THAN N HOUSES  ******/
+vector <apartment> show_apartments(int N) {
+	vector <apartment> v_temp;
+	for (int i = 0; i < v_apartment.size; i++) {
+		if (v_apartment[i].get_state() == 0)
+		if (v_apartment[i].get_v_house_for_apartment.size > N) {
+			v_temp.push_back(v_apartment[i]);
+		}
+	}
+	return v_temp;
+}
+/*******  SHOW ALL HABITATIONS SEPERATLY ******/
+vector <apartment> show_all()
+{
+	return v_apartment;
+}
+
+vector <northVilla> Nshow_all() {
+	return v_northVilla;
+}
+
+vector <southVilla> Sshow_all() {
+	return v_southVilla;
+}
+/*******************************************************************/
+int main()
+{
+	show_apartment(1, 2);
+	
+
+
+
+	return 0;
+}
+
+
+

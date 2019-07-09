@@ -1,0 +1,16 @@
+[
+    {
+        "address": "12",
+        "area_of_back_yard": 12,
+        "area_of_front_yard": 12,
+        "building_space": 1,
+        "id": "100",
+        "m_username": "1",
+        "nu_username": "-1",
+        "number_of_rooms": 1,
+        "price_per_metr": 12,
+        "state": 0,
+        "total_price": 76.8,
+        "total_space": 12
+    }
+]

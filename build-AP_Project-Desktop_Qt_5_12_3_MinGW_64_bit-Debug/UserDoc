@@ -1,0 +1,20 @@
+[
+    {
+        "birthday.day": 0,
+        "birthday.month": 0,
+        "birthday.year": 0,
+        "cash": 1,
+        "family": "1",
+        "name": "1",
+        "password": "��B8��#�\r�P�ou��",
+        "state": true,
+        "time_in.hour": 20,
+        "time_in.minute": 28,
+        "time_in.second": 42,
+        "time_out.hour": 0,
+        "time_out.minute": 0,
+        "time_out.second": 272,
+        "type": false,
+        "username": "1"
+    }
+]
